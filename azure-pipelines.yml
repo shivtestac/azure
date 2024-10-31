@@ -6,6 +6,8 @@
 trigger:
 - main
 
+variables:
+  name: 'bora'
 pool:
   vmImage: ubuntu-latest
 
