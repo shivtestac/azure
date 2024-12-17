@@ -26,3 +26,9 @@ steps:
     echo "shiv how are uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
 
 
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'devssh'
+    runOptions: 'commands'
+    commands: 'hostname'
+    readyTimeout: '20000'
