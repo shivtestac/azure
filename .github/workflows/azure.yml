@@ -14,9 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Azure CLI
+      # Step 2: Set up Azure CLI using the correct action
       - name: Set up Azure CLI
-        uses: azure/azure-cli-action@v1
+        uses: azure/setup-azure-cli@v1
 
       # Step 3: Log in to Azure using Service Principal credentials from the secret
       - name: Login to Azure
