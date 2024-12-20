@@ -1,0 +1,40 @@
+name: Azure Resource Group Creation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-resource-group:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code (optional)
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Azure CLI
+      - name: Set up Azure CLI
+        uses: azure/setup-azure-cli@v1
+
+      # Step 3: Log in to Azure using Service Principal credentials from the secret
+      - name: Login to Azure
+        run: |
+          echo "${{ secrets.AZURE_CREDENTIALS }}" > azure-credentials.json
+          CLIENT_ID=$(jq -r '.clientId' azure-credentials.json)
+          CLIENT_SECRET=$(jq -r '.clientSecret' azure-credentials.json)
+          TENANT_ID=$(jq -r '.tenantId' azure-credentials.json)
+          SUBSCRIPTION_ID=$(jq -r '.subscriptionId' azure-credentials.json)
+
+          az login --service-principal \
+            --username $CLIENT_ID \
+            --password $CLIENT_SECRET \
+            --tenant $TENANT_ID
+
+          az account set --subscription $SUBSCRIPTION_ID
+
+      # Step 4: Create the Resource Group 'hotaaaaaaa'
+      - name: Create Resource Group 'hotaaaaaaa'
+        run: |
+          az group create --name hotaaaaaaa --location eastus
