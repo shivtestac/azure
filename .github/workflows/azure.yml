@@ -16,7 +16,7 @@ jobs:
 
       # Step 2: Set up Azure CLI
       - name: Set up Azure CLI
-        uses: azure/setup-azure-cli@v1
+        uses: azure/azure-cli-action@v1
 
       # Step 3: Log in to Azure using Service Principal credentials from the secret
       - name: Login to Azure
