@@ -24,6 +24,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install azure-cli
 
+
       # Step 3: Log in to Azure using Service Principal credentials from GitHub secrets
       - name: Login to Azure
         run: |
